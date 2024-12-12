@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results - <%= appName %></title>
+    <link rel="stylesheet" href="/main.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Search Results for "<%= keyword %>" - <%= appName %></h1>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/search">Search for Assignments</a></li>
+          <li><a href="/register">Register</a></li>
+          <li><a href="/assignments">Assignments</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section>
+      <% if (assignments.length > 0) { %>
+        <h2>Assignments Found:</h2>
+        <ul>
+          <% assignments.forEach(function(assignment) { %>
+            <li>
+              <strong><%= assignment.title %></strong><br>
+              <%= assignment.description %><br>
+              Due: <%= assignment.due_date %>
+            </li>
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p>No assignments found matching "<%= keyword %>".</p>
+      <% } %>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 <%= appName %>. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>
